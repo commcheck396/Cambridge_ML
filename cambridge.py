@@ -38,39 +38,39 @@ def gp_prediction(x1, y1, xstar, lengthScale, varSigma, noise):
 #         d = cdist(x1, x2)
 #     return varSigma*np.exp(-(2*np.sin((np.pi/period)*d)**2)/lengthScale**2)
 
-x = np.linspace(-6, 6, 200).reshape(-1, 1)
-c=x.shape
-# compute covariance matrix
-K = rbf_kernel(x, None, 1.0, 2.0)
-# create mean vector
-mu = np.zeros(200)
-# draw samples 20 from Gaussian distribution
-f = np.random.multivariate_normal(mu, K, 20)
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(x, f.T)
-plt.show()
-
-
-# N = 5
-# x = np.linspace(-3.1,3,N)
-# y = np.sin(2*np.pi/x) + x*0.1 + 0.3*np.random.randn(x.shape[0])
-# x = np.reshape(x,(-1,1))
-# y = np.reshape(y,(-1,1))
-# x_star = np.linspace(-6, 6, 500)
-
-# x1=1
-# y1=1
-
-# lengthScale=None
-# varSigma=1.0
-# noise=2.0
-
-# Nsamp = 100
-# mu_star, var_star, x_star = gp_prediction(x, y, x, lengthScale, varSigma, noise)
-# fstar = np.random.multivariate_normal(mu_star, var_star, Nsamp)
+# x = np.linspace(-6, 6, 200).reshape(-1, 1)
+# c=x.shape
+# # compute covariance matrix
+# K = rbf_kernel(x, None, 1.0, 2.0)
+# # create mean vector
+# mu = np.zeros(200)
+# # draw samples 20 from Gaussian distribution
+# f = np.random.multivariate_normal(mu, K, 20)
 # fig = plt.figure()
 # ax = fig.add_subplot(111)
-# ax.plot(x_star, fstar.T)
-# ax.scatter(x1, y1, 200, 'k', '*', zorder=2)
+# ax.plot(x, f.T)
 # plt.show()
+
+
+N = 5
+x = np.linspace(-3.1,3,N)
+y = np.sin(2*np.pi/x) + x*0.1 + 0.3*np.random.randn(x.shape[0])
+x = np.reshape(x,(-1,1))
+y = np.reshape(y,(-1,1))
+x_star = np.linspace(-6, 6, 500)
+
+x1=1
+y1=1
+
+lengthScale=None
+varSigma=1.0
+noise=2.0
+
+Nsamp = 100
+mu_star, var_star, x_star = gp_prediction(x, y, x, lengthScale, varSigma, noise)
+fstar = np.random.multivariate_normal(mu_star, var_star, Nsamp)
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot(x_star, fstar.T)
+ax.scatter(x1, y1, 200, 'k', '*', zorder=2)
+plt.show()
